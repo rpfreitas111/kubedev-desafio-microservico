@@ -1,0 +1,69 @@
+version: '3.8'
+volumes:
+  review_vol:
+  movie_vol: 
+networks:
+  net_tomatoes:
+    driver: bridge
+services:
+  rotten_tomatoes:
+    image: rpfreitas111/rotten-tomatoes:${TAG}
+    env_file: 
+      - ${PWD}/rotten-potatoes-ms/src/env
+    build:
+      dockerfile: ${PWD}/rotten-potatoes-ms/src/Dockerfile
+      context: ${PWD}/rotten-potatoes-ms/src/.
+    ports:
+      - 8080:5000
+    networks:
+      - net_tomatoes
+    depends_on:
+      - review
+      - movies
+  review:
+    image: rpfreitas111/review:${TAG}
+    env_file:
+      - ${PWD}/review/src/env
+    build:
+      dockerfile: ${PWD}/review/src/Dockerfile
+      context: ${PWD}/review/src/.
+    ports:
+      - 8282:8282
+    networks:
+      - net_tomatoes
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:14.1
+    ports:
+      - 5432:5432
+    env_file:
+      - ${PWD}/review/src/env
+    networks:
+      - net_tomatoes
+    volumes:
+      - review_vol:/var/lib/postgresql/data 
+  movies:
+    image: rpfreitas111/movies:${TAG}
+    env_file:
+      - ${PWD}/movie/src/env
+    build:
+      dockerfile: ${PWD}/movie/src/Dockerfile
+      context: ${PWD}/movie/src/.
+    ports:
+      - 8181:8181
+    networks:
+      - net_tomatoes
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:5.0
+    env_file:
+      - ${PWD}/movie/src/env
+    ports:
+      - 27017:27017
+    networks:
+      - net_tomatoes
+    volumes:
+      - movie_vol:/data/db
+  
