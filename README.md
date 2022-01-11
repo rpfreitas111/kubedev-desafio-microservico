@@ -34,6 +34,26 @@ Desafio final do modulo de docker. O objetivo deste desafio é levantar uma apli
     - Aplicação feito em **python 3.10.1** com flask
       - Porta *default* do python **5000**
 
-## Informações importante para uso do projeto
+## Arquivo de Environment
 
-  - Arquivos
+  - *env.compose*
+    - responsável por definir as versões das imagem no docker-compose
+  - */movie/src/env*
+    - responsável por definir o Environment da aplicação movie.
+  - */review/env*
+    - responsável por definir o Environment da aplicação review.
+  - /rotten-potatoes-ms/src/env
+    - responsável por definir o Environment de conexão do frontend.
+
+## Comando iniciar o projeto e monitoramento
+
+  - *Iniciar a aplicação*
+    >docker-compose --env-file env.compose  up -d --build
+  - *Verificar os logs das aplicações*
+    >docker-compose logs
+    >
+    >docker-compose logs -f
+  - *Verificar os estado das aplicações"
+    >docker-compose ps
+  - *Encerrar todo o ambiente*
+    >docker-compose --env-file env.compose  down
