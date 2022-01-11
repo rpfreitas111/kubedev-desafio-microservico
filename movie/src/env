@@ -1,0 +1,6 @@
+# Variável da aplicação
+MONGODB_URI=mongodb://mongouser:mongopwd@mongodb:27017/admin
+# Variável do banco de dados mongodb
+MONGO_INITDB_ROOT_USERNAME=mongouser
+MONGO_INITDB_ROOT_PASSWORD=mongopwd
+MONGO_INITDB_DATABASE=admin

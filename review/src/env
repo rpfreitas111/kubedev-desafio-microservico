@@ -1,0 +1,6 @@
+ConnectionStrings__MyConnection=Host=postgres;Database=review;Username=pguser;Password=Pg@123;
+
+# variaveis do postgresql
+POSTGRES_PASSWORD=Pg@123
+POSTGRES_USER=pguser
+POSTGRES_DB=review
