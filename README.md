@@ -45,10 +45,14 @@ Desafio final do modulo de docker. O objetivo deste desafio é levantar uma apli
   - /rotten-potatoes-ms/src/env
     - responsável por definir o Environment de conexão do frontend.
 
-## Comando iniciar o projeto e monitoramento
+## Comando iniciar o projeto com e sem o build e monitor
 
-  - *Iniciar a aplicação*
+  - *Iniciar a aplicação compilando as imagens*
     >docker-compose --env-file env.compose  up -d --build
+  - *Enviar todas as imagem para o Docker-hub*
+    >docker-compose --env-file env.compose push
+  - *Iniciar a aplicação sem realizar o build*
+    >docker-compose --env-file env.compose up -d 
   - *Verificar os logs das aplicações*
     >docker-compose logs
     >
