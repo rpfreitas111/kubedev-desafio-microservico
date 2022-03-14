@@ -57,7 +57,7 @@ Desafio final do modulo de docker. O objetivo deste desafio é levantar uma apli
     >docker-compose logs
     >
     >docker-compose logs -f
-  - *Verificar os estado das aplicações"
+  - *Verificar os estado das aplicações"*
     >docker-compose ps
   - *Encerrar todo o ambiente*
     >docker-compose --env-file env.compose  down
